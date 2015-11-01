@@ -18,7 +18,7 @@
         var url = document.forms["redirect"]["url"].value;
 
         if (ghurl.test(url)) {
-            window.location = "https://raw-github.toxme.se" + url.split(".com")[1];
+            window.location = "https://raw-github.toxme.se" + url.split("raw.githubusercontent.com")[1];
         } else {
           $("#url").blur()
           $.snackbar({content: "Please enter a valid github raw file URL"});
