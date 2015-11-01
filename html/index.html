@@ -16,8 +16,9 @@
       function togglebutton() {
         $("#newtab").toggleClass("btn-info")
         var opennew = $("#opennew"),
-          val = opennew.val();
+        val = opennew.val();
         opennew.val(val === "true" ? "false" : "true");
+        $("#newtab").blur()
       }
       function loadgh() {
         var ghurl = new RegExp("https:\/\/raw.githubusercontent.com\/[a-zA-Z]+\/[a-zA-Z]+");
