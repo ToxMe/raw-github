@@ -31,26 +31,41 @@
   <p>View a file on github, click raw, change the domain to github-raw.toxme.se.</p>
 <h2>How much does this service cost?</h2>
   <p>It's 100% free, cloudflare eats the bandwidth cost.</p>
+
 <h2>What about caching?</h2>
   <p>We tell cloudflare to cache files as long as they aren't modified on githubs side,
     telling browsers to cache for 30 minutes.</p>
+
 <h2>Do you modify data at all?</h2>
   <p>For sanity reasons we have cloudflare minify js/css/html, every other feature is
-    disabled except rocketloader which we leave on manual</p>
+    disabled except rocketloader which we leave on manual.<br><br>
+    If you'd like to enable it please view
+    <a href='https://support.cloudflare.com/hc/en-us/articles/200168056-What-does-Rocket-Loader-do-'>this</a>
+    article from Cloudflare on the feature.</p>
+
 <h2>Do you block Tor users/display security warnings?</h2>
   <p>We have all of cloudflares security options as low as possible.</p>
+
 <h2>Can I use this on my production site?</h2>
   <p>Sure, no promises though, because if you haven't noticed yet this is free.</p>
+
 <h2>What do you do on the server side?</h2>
   <p>We strip out most of githubs headers and come up with a sane sounding content-type,
     then we polish it up, stick a nice bowtie on, and hope for the best.</p>
+
 <h2>How much does this cost to run?</h2>
   <p>A whole $5 a month for a VPS running nginx. Fancy, I know.</p>
+
 <h2>Where is the source?</h2>
   <p>Right <a href='https://github.com/ToxMe/raw-github'>here</a>, this site is hosting
     itself.</p>
+
 <h2>Can I host my personal webpage on this?</h2>
   <p>I mean if you really want, I'm not going to stop you. The URL might be a bit odd though.</p>
+
+<h2>What does the inline Javscript on this page do?</h2>
+  <p>Asynchronously load the css if possible, as that feature isn't part of the html standard.</p>
+
 </section>
   </body>
 </html>
