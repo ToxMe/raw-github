@@ -7,7 +7,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  background: url(../img/bg.png) no-repeat 0 0;
+  background: url(../img/bg.jpg) no-repeat 0 0;
   background-attachment: fixed;
   background-size: cover;
   color: #606c71; }
@@ -33,6 +33,10 @@ a {
   transition: color 0.2s, background-color 0.2s, border-color 0.2s; }
   .btn + .btn {
     margin-left: 1rem; }
+
+.hide {
+    visibility: hidden;
+}
 
 .btn:hover {
   color: rgba(255, 255, 255, 0.8);
