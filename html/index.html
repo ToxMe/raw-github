@@ -20,7 +20,6 @@
         if (ghurl.test(url)) {
             window.location = "https://raw-github.toxme.se" + url.split(".com")[1];
         } else {
-          $('#snackbar').css('background-color', '#ff0000');
           $.snackbar({content: "Please enter a valid github raw file URL"});
         }
       }
@@ -50,7 +49,7 @@
         Enter a raw Github URL below or change the domain to raw-github.toxme.se
       </h3>
       <form name="redirect" method="post" action="javascript:loadgh()">
-        <input type="url" class="form-control" size="100%" name="url" placeholder="https://raw.githubusercontent.com/..." autofocus>
+        <input type="url" class="form-control autoresize" name="url" placeholder="https://raw.githubusercontent.com/..." autofocus>
       </form>
       <hr>
 

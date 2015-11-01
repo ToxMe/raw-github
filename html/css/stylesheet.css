@@ -34,8 +34,8 @@ a {
   .btn + .btn {
     margin-left: 1rem; }
 
-.hide {
-    visibility: hidden;
+.autoresize {
+  width:100%;
 }
 
 .btn:hover {
