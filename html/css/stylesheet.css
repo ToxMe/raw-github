@@ -34,8 +34,14 @@ a {
   .btn + .btn {
     margin-left: 1rem; }
 
-.autoresize {
-  width:100%;
+.autoresize-textbox {
+  width:90%;
+}
+
+.autoresize-checkbox {
+  width:5%;
+  float: center;
+
 }
 
 .btn:hover {
