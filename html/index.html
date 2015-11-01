@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Raw Github</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+    function loadCSS(href,before,media,callback){"use strict";var ss=window.document.createElement("link");var ref=before||window.document.getElementsByTagName("script")[0];var sheets=window.document.styleSheets;ss.rel="stylesheet";ss.href=href;ss.media="only x";if(callback){ss.onload=callback}ref.parentNode.insertBefore(ss,ref);ss.onloadcssdefined=function(cb){var defined;for(var i=0;i<sheets.length;i++){if(sheets[i].href&&sheets[i].href===ss.href){defined=true}}if(defined){cb()}else{setTimeout(function(){ss.onloadcssdefined(cb)})}};ss.onloadcssdefined(function(){ss.media=media||"all"});return ss}
+    loadCSS("css/stylesheet.css");
+    loadCSS("css/material.min.css");
+    loadCSS("css/font.min.css");
+    </script>
+
+    <noscript>
+      <link rel="stylesheet" type="text/css" href="css/material.min.css">
+      <link href='css/font.min.css' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
+    </noscript>
+
+  </head>
+  <body id="body">
+
+    <section class="page-header modal modal-content">
+      <h1 class="project-name">Raw Github</h1>
+      <h2 class="project-tagline" id="tag">Content types, minimal caching, and acceptable abuse for github files</h2>
+    </section>
+
+<section class="main-content modal-content jumbotron vert-center">
+<h1>Frequently asked questions</h1>
+<h2>How do I use this?</h2>
+  <p>View a file on github, click raw, change the domain to github-raw.toxme.se.</p>
+<h2>How much does this service cost?</h2>
+  <p>It's 100% free, cloudflare eats the bandwidth cost.</p>
+<h2>What about caching?</h2>
+  <p>We tell cloudflare to cache files as long as they aren't modified on githubs side,
+    telling browsers to cache for 30 minutes.</p>
+<h2>Do you modify data at all?</h2>
+  <p>For sanity reasons we have cloudflare minify js/css/html, every other feature is
+    disabled except rocketloader which we leave on manual</p>
+<h2>Do you block Tor users/display security warnings?</h2>
+  <p>We have all of cloudflares security options as low as possible.</p>
+<h2>Can I use this on my production site?</h2>
+  <p>Sure, no promises though, because if you haven't noticed yet this is free.</p>
+<h2>What do you do on the server side?</h2>
+  <p>We strip out most of githubs headers and come up with a sane sounding content-type,
+    then we polish it up, stick a nice bowtie on, and hope for the best.</p>
+<h2>How much does this cost to run?</h2>
+  <p>A whole $5 a month for a VPS running nginx. Fancy, I know.</p>
+<h2>Where is the source?</h2>
+  <p>Right <a href='https://github.com/ToxMe/raw-github'>here</a>, this site is hosting
+    itself.</p>
+<h2>Can I host my personal webpage on this?</h2>
+  <p>I mean if you really want, I'm not going to stop you. The URL might be a bit odd though.</p>
+</section>
+  </body>
+</html>
