@@ -15,11 +15,17 @@
       loadCSS("css/font.min.css");
       loadCSS("https://raw-github.toxme.se/FezVrasta/snackbarjs/master/dist/snackbar.css")
       function setvar() {
-        $.get('https://raw-github.toxme.se/stats/current', function(data) {
-           $("#cur").text(data)
+        $.get('https://raw-github.toxme.se/stats/req-current', function(data) {
+           $("#req_cur").text(data)
         }, 'text');
-        $.get('https://raw-github.toxme.se/stats/average', function(data) {
-           $("#avg").text(data)
+        $.get('https://raw-github.toxme.se/stats/req-average', function(data) {
+           $("#req_avg").text(data)
+        }, 'text');
+        $.get('https://raw-github.toxme.se/stats/bps-current', function(data) {
+           $("#bps_cur").text(data)
+        }, 'text');
+        $.get('https://raw-github.toxme.se/stats/bps-average', function(data) {
+           $("#bps_avg").text(data)
         }, 'text');
       }
       $(document).ready(setvar);
@@ -50,16 +56,19 @@
         <p>
           (Calculated over 1 hour/24 hour aggregate)
         </p>
-        Current: <a class="btn btn-info btn-raised" id="cur" href="javascript:setvar()">0.00 Req/s</a><br>
-        Average: <a class="btn btn-info btn-raised" id="avg" href="javascript:setvar()">0.00 Req/s</a>
+        Current: <a class="btn btn-info btn-raised" id="req_cur" href="javascript:setvar()">0.00 Req/s</a><br>
+        Average: <a class="btn btn-info btn-raised" id="req_avg" href="javascript:setvar()">0.00 Req/s</a>
 
       <hr>
       <h1>
         Bandwidth per second
       </h1>
       <p>
-        Coming soon.
+        (Calculated over 1 hour/24 hour aggregate)
       </p>
+      Current: <a class="btn btn-info btn-raised" id="bps_cur" href="javascript:setvar()">0.00 KB/s</a><br>
+      Average: <a class="btn btn-info btn-raised" id="bps_avg" href="javascript:setvar()">0.00 KB/s</a>
+
       <hr>
 
       <h1>
