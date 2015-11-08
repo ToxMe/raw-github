@@ -33,7 +33,8 @@
 						<header>
 							<div class="inner">
 								<h2>Phobos</h2>
-								<input type="text" name="url" id="url" value="" />
+								<form name="redirect" method="post" action="javascript:loadgh()">
+									<input type="text" name="url" id="url" placeholder="https://raw.githubusercontent.com/..." autofocus/>
 								<p>Enter a Github url and press enter</p>
 							</div>
 						</header>
@@ -41,8 +42,9 @@
 						<!-- Content -->
 							<div class="wrapper">
 								<div class="inner">
-									<input type="checkbox" id="newtab" name="newtab" checked>
+									<input type="checkbox" id="newtab" name="newtab" checked/>
 									<label for="newtab">Open in a new tab</label>
+								</form>
 							</div>
 
 					</section>

@@ -209,3 +209,30 @@ $.get('https://raw-github.toxme.se/stats/bps-average', function(data) {
  $("#bps_avg").text(data)
 }, 'text');
 }
+
+function loadgh() {
+  var ghurl = new RegExp("https:\/\/raw.githubusercontent.com\/[a-zA-Z]+\/[a-zA-Z]+");
+  var ghlazy = new RegExp("https:\/\/github.com\/.+\/.+\/blob\/[a-zA-Z]+\/");
+  var url = document.forms["redirect"]["url"].value;
+  var newtab = $("#newtab").prop('checked');
+
+  if (ghlazy.test(url)) {
+    //https://github.com/ToxMe/raw-github/blob/master/html/index.html
+    //https://raw.githubusercontent.com/ToxMe/raw-github/master/html/index.html
+    var repo = url.split("https://github.com")[1].split("/blob")[0];
+    var file = url.split(repo + "/blob")[1];
+    url = "https://raw.githubusercontent.com" + repo + file;
+  }
+
+  if (ghurl.test(url)) {
+    var ghproxy = "https://raw-github.toxme.se" + url.split("raw.githubusercontent.com")[1];
+    if (newtab == true) {
+      window.open(ghproxy);
+    } else {
+      window.location = ghproxy;
+    }
+  } else {
+    $("#url").blur()
+    $.snackbar({content: "Please enter a valid github raw file URL"});
+  }
+}
