@@ -1,3 +1,9 @@
+var options = {
+    bg: '#9d2631',
+    id: 'mynano'
+};
+var nanobar = new Nanobar(options);
+
 (function($) {
 
     "use strict";
@@ -177,7 +183,8 @@ if ('addEventListener' in document) {
 }
 
 function newpage() {
-    $("html, body").animate({ scrollTop: 0 }, "slow");
+    nanobar.go(100)
+    $("html, body").animate({ scrollTop: 0 });
     if (location.hash == '') {
         $('#page-wrapper').load("index.html #page-wrapper");
     } else {
