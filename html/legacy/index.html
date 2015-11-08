@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      Raw Github
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="ToxMe/raw-github/master/html/favicon.ico"/>
+    <script>
+      function loadCSS(href,before,media,callback){"use strict";var ss=window.document.createElement("link");var ref=before||window.document.getElementsByTagName("script")[0];var sheets=window.document.styleSheets;ss.rel="stylesheet";ss.href=href;ss.media="only x";if(callback){ss.onload=callback}ref.parentNode.insertBefore(ss,ref);ss.onloadcssdefined=function(cb){var defined;for(var i=0;i<sheets.length;i++){if(sheets[i].href&&sheets[i].href===ss.href){defined=true}}if(defined){cb()}else{setTimeout(function(){ss.onloadcssdefined(cb)})}};ss.onloadcssdefined(function(){ss.media=media||"all"});return ss}
+      loadCSS("css/stylesheet.css");
+      loadCSS("css/material.min.css");
+      loadCSS("css/font.min.css");
+      loadCSS("https://raw-github.toxme.se/FezVrasta/snackbarjs/master/dist/snackbar.css")
+      function togglebutton() {
+        $("#newtab").toggleClass("btn-info")
+        var opennew = $("#opennew"),
+        val = opennew.val();
+        opennew.val(val === "true" ? "false" : "true");
+        $("#newtab").blur()
+      }
+      function loadgh() {
+        var ghurl = new RegExp("https:\/\/raw.githubusercontent.com\/[a-zA-Z]+\/[a-zA-Z]+");
+        var url = document.forms["redirect"]["url"].value;
+        var newtab = document.forms["redirect"]["opennew"].value;
+
+        if (ghurl.test(url)) {
+          var ghproxy = "https://raw-github.toxme.se" + url.split("raw.githubusercontent.com")[1];
+
+          if (newtab == "true") {
+            window.open(ghproxy);
+          } else {
+            window.location = ghproxy;
+          }
+        } else {
+          $("#url").blur()
+          $.snackbar({content: "Please enter a valid github raw file URL"});
+        }
+      }
+    </script>
+
+    <noscript>
+      <link rel="stylesheet" type="text/css" href="css/material.min.css">
+      <link rel="stylesheet" type="text/css" href="css/font.min.css">
+      <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="https://raw-github.toxme.se/FezVrasta/snackbarjs/master/dist/snackbar.css">
+    </noscript>
+
+  </head>
+  <body id="body">
+
+    <section class="page-header modal modal-content">
+      <h1 class="project-name">
+        Raw Github
+      </h1>
+      <h2 class="project-tagline" id="tag">
+        Serve files from Github, with minimal caching and content-type support
+      </h2>
+    </section>
+
+    <section class="main-content modal-content jumbotron vert-center">
+      <h3>
+        Enter a raw Github URL below or change the domain to raw-github.toxme.se
+      </h3>
+      <form name="redirect" method="post" action="javascript:loadgh()">
+        <input type="url" class="form-control autoresize-textbox" id="url" name="url" placeholder="https://raw.githubusercontent.com/..." autofocus>
+        <label><a class="btn btn-flat btn-info mdi-action-launch autoresize-checkbox" id="newtab" href="javascript:togglebutton()"></a></label>
+        <input type="hidden" id="opennew" name="opennew" value="true">
+      </form>
+      <hr>
+
+      <h1>
+        Frequently asked questions
+      </h1>
+
+      <h2>
+        How do I use this?
+      </h2>
+      <p>
+        View a file on github, click raw, change the domain to github-raw.toxme.se.
+      </p>
+      <h2>
+        How much does this service cost?
+      </h2>
+      <p>
+        It's 100% free, cloudflare eats the bandwidth cost.
+      </p>
+
+      <h2>
+        Can I view statistics?
+      </h2>
+        <p>
+          <a class="btn-info btn-flat" href='stats.html'>Yup! They just so happen to be right over
+          here.</a>
+        </p>
+
+      <h2>
+        What about caching?
+      </h2>
+      <p>
+        We tell cloudflare to cache files as long as they aren't modified on githubs side,
+        telling browsers to cache for 30 minutes.
+      </p>
+
+      <h2>
+        Do you modify data at all?
+      </h2>
+      <p>
+        For sanity reasons we have cloudflare minify js/css/html, every other feature is
+        disabled.
+      </p>
+
+      <h2>
+        Do you block Tor users/display security warnings?
+      </h2>
+      <p>
+        We have all of cloudflares security options as low as possible.
+      </p>
+
+      <h2>
+        Can I use this on my production site?
+      </h2>
+      <p>
+        Sure, no promises though, because if you haven't noticed yet this is free.
+      </p>
+
+      <h2>
+        What do you do on the server side?
+      </h2>
+      <p>
+        We strip out most of githubs headers and come up with a sane sounding content-type,
+        then we polish it up, stick a nice bowtie on, and hope for the best.
+      </p>
+
+      <h2>
+        How much does this cost to run?
+      </h2>
+      <p>
+        A whole $5 a month for a VPS running nginx. Fancy, I know.
+      </p>
+
+      <h2>
+        Where is the source?
+      </h2>
+      <p>
+        Right
+        <a href='https://github.com/ToxMe/raw-github'>
+          here
+        </a>
+        , this site is hosting
+        itself.
+      </p>
+
+      <h2>
+        Can I host my personal webpage on this?
+      </h2>
+      <p>
+        I mean if you really want, I'm not going to stop you. The URL might be a bit odd though.
+      </p>
+
+      <h2>
+        What does the inline Javscript on this page do?
+      </h2>
+      <p>
+        Asynchronously load the css if possible, as that feature isn't part of the html standard.
+      </p>
+
+    </section>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="https://raw-github.toxme.se/FezVrasta/snackbarjs/master/dist/snackbar.min.js" async></script>
+  </body>
+</html>

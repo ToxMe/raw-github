@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Raw Github</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script>
+    function loadCSS(href,before,media,callback){"use strict";var ss=window.document.createElement("link");var ref=before||window.document.getElementsByTagName("script")[0];var sheets=window.document.styleSheets;ss.rel="stylesheet";ss.href=href;ss.media="only x";if(callback){ss.onload=callback}ref.parentNode.insertBefore(ss,ref);ss.onloadcssdefined=function(cb){var defined;for(var i=0;i<sheets.length;i++){if(sheets[i].href&&sheets[i].href===ss.href){defined=true}}if(defined){cb()}else{setTimeout(function(){ss.onloadcssdefined(cb)})}};ss.onloadcssdefined(function(){ss.media=media||"all"});return ss}
+    loadCSS("css/stylesheet.css");
+    loadCSS("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material.min.css");
+    loadCSS("https://fonts.googleapis.com/css?family=Roboto");
+    </script>
+
+    <noscript>
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material.min.css">
+      <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
+    </noscript>
+
+  </head>
+
+    <section class="page-header modal modal-content">
+      <h1 class="project-name">Funny story, we lost a page or two</h1>
+      <h2 class="project-tagline" id="tag">I <i>swear</i>, it's somewhere out this way</h2>
+    </section>
+
+<section class="main-content modal-content jumbotron vert-center">
+  <a href='https://download.unsplash.com/photo-1423753623104-718aaace6772' id="list">
+    <img src='img/404.jpg'></img>
+  </a>
+</section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nanobar/0.2.1/nanobar.min.js"></script>
+<script src="js/jquery.mobile.custom.min.js" async></script>
+<script src="js/newpage.js" async></script>
+
+<script>
+var options={bg:'#03A9F4',id:'mynano'};var nanobar=new Nanobar(options);nanobar.go(100);jQuery(window).load(function(){nanobar.go(0)});jQuery(window).unload(function(){nanobar.go(100)});jQuery(window).click(function(){nanobar.go(100)});
+</script>
+
+  </body>
+</html>

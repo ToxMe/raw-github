@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title>
+      Raw Github
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="ToxMe/raw-github/master/html/favicon.ico"/>
+    <script>
+      function loadCSS(href,before,media,callback){"use strict";var ss=window.document.createElement("link");var ref=before||window.document.getElementsByTagName("script")[0];var sheets=window.document.styleSheets;ss.rel="stylesheet";ss.href=href;ss.media="only x";if(callback){ss.onload=callback}ref.parentNode.insertBefore(ss,ref);ss.onloadcssdefined=function(cb){var defined;for(var i=0;i<sheets.length;i++){if(sheets[i].href&&sheets[i].href===ss.href){defined=true}}if(defined){cb()}else{setTimeout(function(){ss.onloadcssdefined(cb)})}};ss.onloadcssdefined(function(){ss.media=media||"all"});return ss}
+      loadCSS("css/stylesheet.css");
+      loadCSS("css/material.min.css");
+      loadCSS("css/font.min.css");
+      function setvar() {
+        $.get('https://raw-github.toxme.se/stats/req-current', function(data) {
+           $("#req_cur").text(data)
+        }, 'text');
+        $.get('https://raw-github.toxme.se/stats/req-average', function(data) {
+           $("#req_avg").text(data)
+        }, 'text');
+        $.get('https://raw-github.toxme.se/stats/bps-current', function(data) {
+           $("#bps_cur").text(data)
+        }, 'text');
+        $.get('https://raw-github.toxme.se/stats/bps-average', function(data) {
+           $("#bps_avg").text(data)
+        }, 'text');
+      }
+      $(document).ready(setvar);
+    </script>
+
+    <noscript>
+      <link rel="stylesheet" type="text/css" href="css/material.min.css">
+      <link rel="stylesheet" type="text/css" href="css/font.min.css">
+      <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
+    </noscript>
+
+  </head>
+  <body id="body">
+
+    <section class="page-header modal modal-content">
+      <h1 class="project-name">
+        Raw Github
+      </h1>
+      <h2 class="project-tagline" id="tag">
+        Statistics
+      </h2>
+    </section>
+
+    <section class="main-content modal-content jumbotron vert-center">
+      <h1>
+        Requests per second
+      </h1>
+        <p>
+          (Calculated over 1 hour/24 hour aggregate)
+        </p>
+        Current: <a class="btn btn-info btn-raised" id="req_cur" href="javascript:setvar()">0.00 Req/s</a><br>
+        Average: <a class="btn btn-info btn-raised" id="req_avg" href="javascript:setvar()">0.00 Req/s</a>
+
+      <hr>
+      <h1>
+        Bandwidth per second
+      </h1>
+      <p>
+        (Calculated over 1 hour/24 hour aggregate)
+      </p>
+      Current: <a class="btn btn-info btn-raised" id="bps_cur" href="javascript:setvar()">0.00 KB/s</a><br>
+      Average: <a class="btn btn-info btn-raised" id="bps_avg" href="javascript:setvar()">0.00 KB/s</a>
+
+      <hr>
+
+      <h1>
+        Popularity by nation
+      </h1>
+      <p>
+        No promises on soon.
+      </p>
+    </section>
+  </body>
+</html>
