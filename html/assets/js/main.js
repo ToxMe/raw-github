@@ -184,7 +184,7 @@ if ('addEventListener' in document) {
 
 function newpage() {
     nanobar.go(100)
-    $("html, body").animate({ scrollTop: 0 });
+    $("html, body").animate({ scrollTop: 0 }, "fast");
     if (location.hash == '') {
         $('#page-wrapper').load("index.html #page-wrapper");
     } else {
