@@ -232,7 +232,16 @@ function loadgh() {
       window.location = ghproxy;
     }
   } else {
-    $("#url").blur()
-    $.snackbar({content: "Please enter a valid github raw file URL"});
+    $("#url").blur();
+    open_error_show();
   }
+}
+
+function open_error_hide () {
+  $("#errmsg").fadeOut();
+}
+
+function open_error_show() { //being lazy
+        $("#errmsg").fadeIn();
+        setTimeout(open_error_hide, 2000);
 }
