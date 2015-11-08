@@ -11,26 +11,6 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<script>
-			window.onhashchange = newpage;
-			if (location.hash != '') {
-				newpage();
-			}
-			if ('addEventListener' in document) {
-		    document.addEventListener('DOMContentLoaded', function() {
-		        FastClick.attach(document.body);
-		    }, false);
-			}
-
-				function newpage() {
-	    if (location.hash == '') {
-	      $('#page-wrapper').load("index.html #page-wrapper");
-	    } else {
-
-	      $('#page-wrapper').load(location.hash.slice( 1 ) + ".html #page-wrapper");
-	    }
-	};
-		</script>
 	</head>
 	<body>
 
