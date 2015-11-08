@@ -182,5 +182,6 @@ function newpage() {
     } else {
 
         $('#page-wrapper').load(location.hash.slice(1) + ".html #page-wrapper");
+        $("html, body").animate({ scrollTop: 0 }, "slow");
     }
 };
