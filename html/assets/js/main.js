@@ -177,11 +177,10 @@ if ('addEventListener' in document) {
 }
 
 function newpage() {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
     if (location.hash == '') {
         $('#page-wrapper').load("index.html #page-wrapper");
     } else {
-
         $('#page-wrapper').load(location.hash.slice(1) + ".html #page-wrapper");
-        $("html, body").animate({ scrollTop: 0 }, "slow");
     }
 };
