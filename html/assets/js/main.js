@@ -189,5 +189,23 @@ function newpage() {
         $('#page-wrapper').load("index.html #page-wrapper");
     } else {
         $('#page-wrapper').load(location.hash.slice(1) + ".html #page-wrapper");
+        if (location.hash.slice(1) == 'stats') {
+          setvar();
+        }
     }
 };
+
+function setvar() {
+$.get('https://raw-github.toxme.se/stats/req-current', function(data) {
+ $("#req_cur").text(data)
+}, 'text');
+$.get('https://raw-github.toxme.se/stats/req-average', function(data) {
+ $("#req_avg").text(data)
+}, 'text');
+$.get('https://raw-github.toxme.se/stats/bps-current', function(data) {
+ $("#bps_cur").text(data)
+}, 'text');
+$.get('https://raw-github.toxme.se/stats/bps-average', function(data) {
+ $("#bps_avg").text(data)
+}, 'text');
+}
