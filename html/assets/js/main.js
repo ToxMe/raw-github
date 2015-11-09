@@ -230,6 +230,12 @@ function loadgh() {
     if (modeurl == true) {
       $("#url").val(ghproxy);
       $("#url").select();
+      if (newtab == true && document.queryCommandSupported("copy") == true) {
+        document.execCommand('copy');
+        $("#copymsg").html("New URL copied to clipboard");
+      } else {
+        $("#copymsg").html("New URL selected, please copy it"); //todo: not this
+      }
       open_copy_show();
     } else {
       if (newtab == true) {
@@ -254,13 +260,18 @@ function open_copy_show() { //being lazy
 }
 
 function newtab_hide() {
-  $("#newtab").fadeOut();
-  $("#newtab-text").fadeOut();
+  if (document.queryCommandSupported("copy") == true) {
+    $("#newtab-text").html("Copy URL");
+  } else {
+    $("#newtab").fadeOut();
+    $("#newtab-text").fadeOut();
+  }
 }
 
 function newtab_show() {
   $("#newtab").fadeIn();
   $("#newtab-text").fadeIn();
+  $("#newtab-text").html("Open in new tab");
 }
 
 function open_error_hide() {
