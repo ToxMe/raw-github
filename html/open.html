@@ -38,6 +38,7 @@
 								<h2>Phobos</h2>
 								<form name="redirect" method="post" action="javascript:loadgh()">
 									<input type="text" name="url" id="url" placeholder="https://github.com/user/repo/blob/branch/file/..." autofocus/>
+								</form>
 								<p>Enter a Github url and press enter</p>
 							</div>
 						</header>
@@ -45,12 +46,15 @@
 						<!-- Content -->
 							<div class="wrapper">
 								<div class="inner">
-									<input type="radio" id="mode-url" name="mode" checked>
+									<input type="radio" id="mode-url" name="mode" onclick="javascript:newtab_hide();" checked>
 									<label for="mode-url">Change URL</label>
-									<input type="radio" id="mode-newtab" name="mode">
-									<label for="mode-newtab">Open in new tab</label>
-								</form>
+									<input type="radio" id="mode-open" name="mode" onclick="javascript:newtab_show();">
+									<label for="mode-open">Open URL</label>
+										<br>
+									<input type="checkbox" id="newtab" name="newtab" style="display: none;" checked>
+									<label for="newtab" id="newtab-text" style="display: none;">Open in new tab</label>
 							</div>
+						</div>
 
 					</section>
 

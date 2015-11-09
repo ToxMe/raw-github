@@ -215,6 +215,7 @@ function loadgh() {
   var ghlazy = new RegExp("https:\/\/github.com\/.+\/.+\/blob\/[a-zA-Z]+\/");
   var url = document.forms["redirect"]["url"].value;
   var modeurl = $("#mode-url").prop('checked');
+  var newtab = $("#newtab").prop('checked');
 
   if (ghlazy.test(url)) {
     //https://github.com/ToxMe/raw-github/blob/master/html/index.html
@@ -231,7 +232,11 @@ function loadgh() {
       $("#url").select();
       open_copy_show();
     } else {
-      window.open(ghproxy, '_blank');
+      if (newtab == true) {
+        window.open(ghproxy, '_blank');
+      } else {
+          window.location = ghproxy;
+      }
     }
   } else {
     $("#url").blur();
@@ -239,7 +244,7 @@ function loadgh() {
   }
 }
 
-function open_copy_hide () {
+function open_copy_hide() {
   $("#copymsg").fadeOut();
 }
 
@@ -248,7 +253,17 @@ function open_copy_show() { //being lazy
         setTimeout(open_copy_hide, 2000);
 }
 
-function open_error_hide () {
+function newtab_hide() {
+  $("#newtab").fadeOut();
+  $("#newtab-text").fadeOut();
+}
+
+function newtab_show() {
+  $("#newtab").fadeIn();
+  $("#newtab-text").fadeIn();
+}
+
+function open_error_hide() {
   $("#errmsg").fadeOut();
 }
 
