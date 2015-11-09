@@ -282,3 +282,7 @@ function open_error_show() { //being lazy
         $("#errmsg").fadeIn();
         setTimeout(open_error_hide, 2000);
 }
+
+
+setvar(); //I'm going to regret this, kill me
+          //tl;dr: get and cache stats on first load
