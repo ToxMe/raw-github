@@ -214,7 +214,7 @@ function loadgh() {
   var ghurl = new RegExp("https:\/\/raw.githubusercontent.com\/[a-zA-Z]+\/[a-zA-Z]+");
   var ghlazy = new RegExp("https:\/\/github.com\/.+\/.+\/blob\/[a-zA-Z]+\/");
   var url = document.forms["redirect"]["url"].value;
-  var newtab = $("#newtab").prop('checked');
+  var modeurl = $("#mode-url").prop('checked');
 
   if (ghlazy.test(url)) {
     //https://github.com/ToxMe/raw-github/blob/master/html/index.html
@@ -226,15 +226,26 @@ function loadgh() {
 
   if (ghurl.test(url)) {
     var ghproxy = "https://raw-github.toxme.se" + url.split("raw.githubusercontent.com")[1];
-    if (newtab == true) {
-      window.open(ghproxy);
+    if (modeurl == true) {
+      $("#url").val(ghproxy);
+      $("#url").select();
+      open_copy_show();
     } else {
-      window.location = ghproxy;
+      window.open(ghproxy, '_blank');
     }
   } else {
     $("#url").blur();
     open_error_show();
   }
+}
+
+function open_copy_hide () {
+  $("#copymsg").fadeOut();
+}
+
+function open_copy_show() { //being lazy
+        $("#copymsg").fadeIn();
+        setTimeout(open_copy_hide, 2000);
 }
 
 function open_error_hide () {

@@ -26,6 +26,8 @@
 							<a href="#menu"><span class="icon fa-arrow-left"></span></a>
 						</nav>
 						<a href="javascript:open_error_hide();" id="errmsg" class="button special fit"  style="display: none;">Please enter a github file URL</a>
+						<a href="javascript:open_copy_hide();" id="copymsg" class="button fit"  style="display: none;">New URL selected, please copy it</a>
+
 					</header>
 
 
@@ -43,8 +45,10 @@
 						<!-- Content -->
 							<div class="wrapper">
 								<div class="inner">
-									<input type="checkbox" id="newtab" name="newtab" checked/>
-									<label for="newtab">Open in a new tab</label>
+									<input type="radio" id="mode-url" name="mode" checked>
+									<label for="mode-url">Change URL</label>
+									<input type="radio" id="mode-newtab" name="mode">
+									<label for="mode-newtab">Open in new tab</label>
 								</form>
 							</div>
 
