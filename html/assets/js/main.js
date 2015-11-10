@@ -196,16 +196,16 @@ function newpage() {
 };
 
 function setvar() {
-$.get('https://raw-github.toxme.se/stats/req-current', function(data) {
+$.get('https://phobos.toxme.se/stats/req-current', function(data) {
  $("#req_cur").text(data)
 }, 'text');
-$.get('https://raw-github.toxme.se/stats/req-average', function(data) {
+$.get('https://phobos.toxme.se/stats/req-average', function(data) {
  $("#req_avg").text(data)
 }, 'text');
-$.get('https://raw-github.toxme.se/stats/bps-current', function(data) {
+$.get('https://phobos.toxme.se/stats/bps-current', function(data) {
  $("#bps_cur").text(data)
 }, 'text');
-$.get('https://raw-github.toxme.se/stats/bps-average', function(data) {
+$.get('https://phobos.toxme.se/stats/bps-average', function(data) {
  $("#bps_avg").text(data)
 }, 'text');
 }
