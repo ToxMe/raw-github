@@ -201,18 +201,21 @@ function sethour() {
   $("#opt-week, #opt-month").removeClass("special");
   $("#opt-hour").addClass("special");
   statapiurl = 'https://phobos.toxme.se/stats/hourly.json';
+  setvar();
 }
 
 function setweek() {
   $("#opt-hour, #opt-month").removeClass("special");
   $("#opt-week").addClass("special");
   statapiurl = 'https://phobos.toxme.se/stats/weekly.json';
+  setvar();
 }
 
 function setmonth() {
   $("#opt-hour, #opt-week").removeClass("special");
   $("#opt-month").addClass("special");
   statapiurl = 'https://phobos.toxme.se/stats/monthly.json';
+  setvar();
 }
 
 function setvar() {
@@ -366,3 +369,5 @@ function open_error_show() { //being lazy
         $("#errmsg").fadeIn();
         setTimeout(open_error_hide, 2000);
 }
+
+setvar();
