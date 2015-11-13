@@ -196,19 +196,15 @@ function newpage() {
 };
 
 function setvar() {
-$.get('https://phobos.toxme.se/stats/req-current', function(data) {
- $("#req_cur").text(data)
-}, 'text');
-$.get('https://phobos.toxme.se/stats/req-average', function(data) {
- $("#req_avg").text(data)
-}, 'text');
-$.get('https://phobos.toxme.se/stats/bps-current', function(data) {
- $("#bps_cur").text(data)
-}, 'text');
-$.get('https://phobos.toxme.se/stats/bps-average', function(data) {
- $("#bps_avg").text(data)
-}, 'text');
+
+  $.getJSON('https://phobos.toxme.se/stats/stats.json', function(data) {
+    $("#req_cur").text(data.request.current.ps + ' Req/s')
+    $("#req_avg").text(data.request.a0.ps + ' Req/s')
+    $("#bps_cur").text(data.bandwidth.current.kbps + ' KB/s')
+    $("#bps_avg").text(data.bandwidth.a0.kbps + ' KB/s')
+   }, 'text');
 }
+
 
 function loadgh() {
   var ghurl = new RegExp("https:\/\/raw.githubusercontent.com\/[a-zA-Z]+\/[a-zA-Z]+");
