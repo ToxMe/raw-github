@@ -4,6 +4,8 @@ var options = {
 };
 var nanobar = new Nanobar(options);
 
+var statapiurl = 'https://phobos.toxme.se/stats/weekly.json'; //default
+
 (function($) {
 
     "use strict";
@@ -195,9 +197,27 @@ function newpage() {
     }
 };
 
+function sethour() {
+  $("#opt-week, #opt-month").removeClass("special");
+  $("#opt-hour").addClass("special");
+  statapiurl = 'https://phobos.toxme.se/stats/hourly.json';
+}
+
+function setweek() {
+  $("#opt-hour, #opt-month").removeClass("special");
+  $("#opt-week").addClass("special");
+  statapiurl = 'https://phobos.toxme.se/stats/weekly.json';
+}
+
+function setmonth() {
+  $("#opt-hour, #opt-week").removeClass("special");
+  $("#opt-month").addClass("special");
+  statapiurl = 'https://phobos.toxme.se/stats/monthly.json';
+}
+
 function setvar() {
 
-  $.getJSON('https://phobos.toxme.se/stats/stats.json', function(data) {
+  $.getJSON(statapiurl, function(data) {
     $("#req_cur").text(data.request.current.ps + ' Req/s')
     $("#req_avg").text(data.request.a0.ps + ' Req/s')
 
