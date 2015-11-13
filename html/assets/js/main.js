@@ -275,24 +275,22 @@ function setvar() {
       ]
     };
 
-    $(window).load(function(){
-        var ct_req = $("#req_graph").get(0).getContext("2d");
-         //This will get the first returned node in the jQuery collection.
-        var requests = new Chart(ct_req).Line(req_stats, {
-          bezierCurveTension : 0.2
-        });
+    var ct_req = $("#req_graph").get(0).getContext("2d");
+     //This will get the first returned node in the jQuery collection.
+    var requests = new Chart(ct_req).Line(req_stats, {
+      bezierCurveTension : 0.2
+    });
 
-        var ct_uniq = $("#unique_graph").get(0).getContext("2d");
-         //This will get the first returned node in the jQuery collection.
-        var requests = new Chart(ct_uniq).Line(unique_stats, {
-          bezierCurveTension : 0.2
-        });
+    var ct_uniq = $("#unique_graph").get(0).getContext("2d");
+     //This will get the first returned node in the jQuery collection.
+    var requests = new Chart(ct_uniq).Line(unique_stats, {
+      bezierCurveTension : 0.2
+    });
 
-        var ct_bt = $("#bandwidth_graph").get(0).getContext("2d");
-         //This will get the first returned node in the jQuery collection.
-        var bandwidth = new Chart(ct_bt).Line(bandwidth_stats, {
-          bezierCurveTension : 0.2
-        });
+    var ct_bt = $("#bandwidth_graph").get(0).getContext("2d");
+     //This will get the first returned node in the jQuery collection.
+    var bandwidth = new Chart(ct_bt).Line(bandwidth_stats, {
+      bezierCurveTension : 0.2
     });
 
    }, 'text');
@@ -372,4 +370,6 @@ function open_error_show() { //being lazy
         setTimeout(open_error_hide, 2000);
 }
 
-setvar();
+$(window).load(function(){
+  setvar();
+});
