@@ -237,16 +237,37 @@ function setvar() {
       ]
     };
 
+    var bandwidth_stats = {
+      labels: [data.request.a0.date, data.request.a1.date, data.request.a2.date, data.request.a3.date, data.request.a4.date, data.request.a5.date, data.request.a6.date],
+      datasets: [
+          {
+              fillColor: "rgba(151,187,205,0.2)",
+              strokeColor: "rgba(151,187,205,1)",
+              pointColor: "rgba(151,187,205,1)",
+              pointStrokeColor: "#fff",
+              pointHighlightFill: "#fff",
+              pointHighlightStroke: "rgba(151,187,205,1)",
+              data: [data.bandwidth.a0.mb, data.bandwidth.a1.mb, data.bandwidth.a2.mb, data.bandwidth.a3.mb, data.bandwidth.a4.mb, data.bandwidth.a5.mb, data.bandwidth.a6.mb]
+          }
+      ]
+    };
+
     var ct_req = $("#req_graph").get(0).getContext("2d");
      //This will get the first returned node in the jQuery collection.
     var requests = new Chart(ct_req).Line(req_stats, {
-      bezierCurve: false
+      bezierCurveTension : 0.2
     });
 
     var ct_uniq = $("#unique_graph").get(0).getContext("2d");
      //This will get the first returned node in the jQuery collection.
     var requests = new Chart(ct_uniq).Line(unique_stats, {
-      bezierCurve: false
+      bezierCurveTension : 0.2
+    });
+
+    var ct_bt = $("#bandwidth_graph").get(0).getContext("2d");
+     //This will get the first returned node in the jQuery collection.
+    var bandwidth = new Chart(ct_bt).Line(bandwidth_stats, {
+      bezierCurveTension : 0.2
     });
 
    }, 'text');
