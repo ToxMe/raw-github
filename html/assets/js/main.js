@@ -384,7 +384,7 @@ function stat_error_hide() {
 
 function stat_error_show() { //being lazy
         $("#errmsg").fadeIn();
-        setTimeout(stat_error_hide, 3000); //50% longer
+        setTimeout(stat_error_hide, 5000); //150% longer
 }
 
 $(window).load(function(){
