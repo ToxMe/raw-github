@@ -1,0 +1,14 @@
+CACHE MANIFEST
+CACHE:
+images/favicon.ico
+assets/css/main.css
+assets/js/main.js
+assets/js/util.js
+assets/js/jquery.scrollex.min.js
+assets/js/jquery.min.js
+assets/js/skel.min.js
+images/bg.jpg
+faq.html
+stats.html
+open.html
+index.html
