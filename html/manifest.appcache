@@ -7,7 +7,15 @@ assets/js/util.js
 assets/js/jquery.scrollex.min.js
 assets/js/jquery.min.js
 assets/js/skel.min.js
+assets/css/images/close.svg
 images/bg.jpg
 faq.html
 stats.html
 open.html
+https://raw-github.toxme.se/encharm/Font-Awesome-SVG-PNG/master/white/svg/usd.svg
+https://raw-github.toxme.se/encharm/Font-Awesome-SVG-PNG/master/white/svg/angle-double-right.svg
+https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js
+https://phobos.toxme.se/assets/css/font-awesome.min.css
+https://fonts.googleapis.com/css?family=Raleway:200,700|Source+Sans+Pro:300,600,300italic,600italic
+https://raw-github.toxme.se/stqism/Py2VM/gh-pages/js/nanobar.min.js
+https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js
