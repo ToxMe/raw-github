@@ -189,6 +189,8 @@ function newpage() {
     $("html, body").animate({ scrollTop: 0 }, "fast");
     if (location.hash == '') {
         $('#page-wrapper').load("index.html #page-wrapper");
+    } else if (location.hash == '#') {
+        $('#page-wrapper').load("index.html #page-wrapper");
     } else {
         $('#page-wrapper').load(location.hash.slice(1) + ".html #page-wrapper");
         if (location.hash.slice(1) == 'stats') {
