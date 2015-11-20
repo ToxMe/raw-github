@@ -192,7 +192,7 @@ function newpage() {
     } else if (location.hash == '#') {
         $('#page-wrapper').load("https://" + document.domain + "/index.html #page-wrapper");
     } else {
-        $('#page-wrapper').load(location.hash.slice(1) + ".html #page-wrapper");
+        $('#page-wrapper').load("https://" + document.domain + "/" + location.hash.slice(1) + ".html #page-wrapper");
         if (location.hash.slice(1) == 'stats') {
           setvar();
         }
