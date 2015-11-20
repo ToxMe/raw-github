@@ -222,63 +222,62 @@ function setmonth() {
 
 function setvar() {
 
-  try {
+  $.getJSON(statapiurl, function(data) {
+    $("#req_cur").text(data.request.current.ps + ' Req/s')
+    $("#req_avg").text(data.request.a0.ps + ' Req/s')
 
-    $.getJSON(statapiurl, function(data) {
-      $("#req_cur").text(data.request.current.ps + ' Req/s')
-      $("#req_avg").text(data.request.a0.ps + ' Req/s')
+    $("#uniq_cur").text(data.unique.current.ps + ' Req/s')
+    $("#uniq_avg").text(data.unique.a0.ps + ' Req/s')
 
-      $("#uniq_cur").text(data.unique.current.ps + ' Req/s')
-      $("#uniq_avg").text(data.unique.a0.ps + ' Req/s')
+    $("#bps_cur").text(data.bandwidth.current.kbps + ' KB/s')
+    $("#bps_avg").text(data.bandwidth.a0.kbps + ' KB/s')
 
-      $("#bps_cur").text(data.bandwidth.current.kbps + ' KB/s')
-      $("#bps_avg").text(data.bandwidth.a0.kbps + ' KB/s')
+    var req_stats = {
+      labels: [data.request.a0.date, data.request.a1.date, data.request.a2.date, data.request.a3.date, data.request.a4.date, data.request.a5.date, data.request.a6.date],
+      datasets: [
+          {
+              fillColor: "rgba(151,187,205,0.2)",
+              strokeColor: "rgba(151,187,205,1)",
+              pointColor: "rgba(151,187,205,1)",
+              pointStrokeColor: "#fff",
+              pointHighlightFill: "#fff",
+              pointHighlightStroke: "rgba(151,187,205,1)",
+              data: [data.request.a0.count, data.request.a1.count, data.request.a2.count, data.request.a3.count, data.request.a4.count, data.request.a5.count, data.request.a6.count]
+          }
+      ]
+    };
 
-      var req_stats = {
-        labels: [data.request.a0.date, data.request.a1.date, data.request.a2.date, data.request.a3.date, data.request.a4.date, data.request.a5.date, data.request.a6.date],
-        datasets: [
-            {
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [data.request.a0.count, data.request.a1.count, data.request.a2.count, data.request.a3.count, data.request.a4.count, data.request.a5.count, data.request.a6.count]
-            }
-        ]
-      };
+    var unique_stats = {
+      labels: [data.request.a0.date, data.request.a1.date, data.request.a2.date, data.request.a3.date, data.request.a4.date, data.request.a5.date, data.request.a6.date],
+      datasets: [
+          {
+              fillColor: "rgba(151,187,205,0.2)",
+              strokeColor: "rgba(151,187,205,1)",
+              pointColor: "rgba(151,187,205,1)",
+              pointStrokeColor: "#fff",
+              pointHighlightFill: "#fff",
+              pointHighlightStroke: "rgba(151,187,205,1)",
+              data: [data.unique.a0.count, data.unique.a1.count, data.unique.a2.count, data.unique.a3.count, data.unique.a4.count, data.unique.a5.count, data.unique.a6.count]
+          }
+      ]
+    };
 
-      var unique_stats = {
-        labels: [data.request.a0.date, data.request.a1.date, data.request.a2.date, data.request.a3.date, data.request.a4.date, data.request.a5.date, data.request.a6.date],
-        datasets: [
-            {
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [data.unique.a0.count, data.unique.a1.count, data.unique.a2.count, data.unique.a3.count, data.unique.a4.count, data.unique.a5.count, data.unique.a6.count]
-            }
-        ]
-      };
+    var bandwidth_stats = {
+      labels: [data.request.a0.date, data.request.a1.date, data.request.a2.date, data.request.a3.date, data.request.a4.date, data.request.a5.date, data.request.a6.date],
+      datasets: [
+          {
+              fillColor: "rgba(151,187,205,0.2)",
+              strokeColor: "rgba(151,187,205,1)",
+              pointColor: "rgba(151,187,205,1)",
+              pointStrokeColor: "#fff",
+              pointHighlightFill: "#fff",
+              pointHighlightStroke: "rgba(151,187,205,1)",
+              data: [data.bandwidth.a0.mb, data.bandwidth.a1.mb, data.bandwidth.a2.mb, data.bandwidth.a3.mb, data.bandwidth.a4.mb, data.bandwidth.a5.mb, data.bandwidth.a6.mb]
+          }
+      ]
+    };
 
-      var bandwidth_stats = {
-        labels: [data.request.a0.date, data.request.a1.date, data.request.a2.date, data.request.a3.date, data.request.a4.date, data.request.a5.date, data.request.a6.date],
-        datasets: [
-            {
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [data.bandwidth.a0.mb, data.bandwidth.a1.mb, data.bandwidth.a2.mb, data.bandwidth.a3.mb, data.bandwidth.a4.mb, data.bandwidth.a5.mb, data.bandwidth.a6.mb]
-            }
-        ]
-      };
-
+    try {
       var ct_req = $("#req_graph").get(0).getContext("2d");
        //This will get the first returned node in the jQuery collection.
       var requests = new Chart(ct_req).Line(req_stats, {
@@ -296,12 +295,11 @@ function setvar() {
       var bandwidth = new Chart(ct_bt).Line(bandwidth_stats, {
         bezierCurveTension : 0.2
       });
+  } catch(err) {
+    console.log("Err: unable to set charts")
+  }
 
-     }, 'text');
-
- } catch(err) {
-   stat_error_show();
- }
+   }, 'text').error(function() { stat_error_show(); });
 
 }
 
