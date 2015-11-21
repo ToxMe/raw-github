@@ -306,9 +306,9 @@ function setvar() {
 function loadgh() {
   var ghurl = new RegExp("https:\/\/raw.githubusercontent.com\/[a-zA-Z]+\/[a-zA-Z]+");
   var ghlazy = new RegExp("https:\/\/github.com\/.+\/.+\/blob\/[a-zA-Z]+\/");
+  var bburl = new RegExp("https:\/\/bitbucket.org\/.+\/.+\/raw\/.+\/.*");
+  var bblazy = new RegExp("https:\/\/bitbucket.org\/.+\/.+\/src\/.+\/.*");
   var url = document.forms["redirect"]["url"].value;
-  var modeurl = $("#mode-url").prop('checked');
-  var newtab = $("#newtab").prop('checked');
 
   if (ghlazy.test(url)) {
     //https://github.com/ToxMe/raw-github/blob/master/html/index.html
@@ -318,28 +318,51 @@ function loadgh() {
     url = "https://raw.githubusercontent.com" + repo + file;
   }
 
-  if (ghurl.test(url)) {
-    var ghproxy = "https://raw-github.toxme.se" + url.split("raw.githubusercontent.com")[1];
-    if (modeurl == true) {
-      $("#url").val(ghproxy);
-      $("#url").select();
-      if (newtab == true && document.queryCommandSupported("copy") == true) {
-        document.execCommand('copy');
-        $("#copymsg").html("New URL copied to clipboard");
-      } else {
-        $("#copymsg").html("New URL selected, please copy it"); //todo: not this
-      }
-      open_copy_show();
-    } else {
-      if (newtab == true) {
-        window.open(ghproxy, '_blank');
-      } else {
-          window.location = ghproxy;
-      }
+  if (bblazy.test(url)) {
+    //https://bitbucket.org/{{user}}/{{repo}}/src/{{branch}}/{{file}}
+    //https://bitbucket.org/{{user}}/{{repo}}/raw/{{branch}}/{{file}}
+    try {
+        url = url.split("?")[0];
+    } catch(err) {
+      console.log("URL lacks ?")
     }
+    var repo = url.split("/src")[0] + "/raw/";
+    var file = url.split("/src")[1];
+    url = repo + file;
+  }
+
+  if (ghurl.test(url)) {
+    var url = "https://raw-github.toxme.se" + url.split("raw.githubusercontent.com")[1];
+    updateurl(url);
+  } else if (bburl.test(url)) {
+    var url = "https://raw-bitbucket.toxme.se" + url.split("bitbucket.org")[1];
+    updateurl(url);
   } else {
     $("#url").blur();
     open_error_show();
+  }
+}
+
+function updateurl(url) {
+  var modeurl = $("#mode-url").prop('checked');
+  var newtab = $("#newtab").prop('checked');
+
+  if (modeurl == true) {
+    $("#url").val(url);
+    $("#url").select();
+    if (newtab == true && document.queryCommandSupported("copy") == true) {
+      document.execCommand('copy');
+      $("#copymsg").html("New URL copied to clipboard");
+    } else {
+      $("#copymsg").html("New URL selected, please copy it"); //todo: not this
+    }
+    open_copy_show();
+  } else {
+    if (newtab == true) {
+      window.open(url, '_blank');
+    } else {
+        window.location = url;
+    }
   }
 }
 
