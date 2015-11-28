@@ -54,6 +54,21 @@ cue boilerplate licence text
 		box-sizing: border-box;
 	}
 
+.loader {
+  width: 99px;
+  height: 100px;
+
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+	text-align: center;
+  margin: auto;
+}
+
+
 /* Grid */
 
 	.row {
