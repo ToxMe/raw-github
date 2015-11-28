@@ -175,11 +175,7 @@ var statapiurl = 'https://phobos.toxme.se/stats/weekly.json'; //default
 })(jQuery);
 
 window.onhashchange = newpage;
-location.hash = location.hash.replace('!','');
 
-if (location.hash != '') {
-    newpage();
-}
 if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function() {
         FastClick.attach(document.body);
@@ -187,23 +183,21 @@ if ('addEventListener' in document) {
 }
 
 function newpage() {
-    location.hash = location.hash.replace('!','');
+    var hash = location.hash.replace('!','');
     nanobar.go(100)
     $("html, body").animate({ scrollTop: 0 }, "fast");
-    if (location.hash == '') { //"https://" + document.domain +
+    if (hash == '') { //"https://" + document.domain +
         $('#page-wrapper').load("home.html #page-wrapper");
-    } else if (location.hash == '#') {
+    } else if (hash == '#') {
         $('#page-wrapper').load("home.html #page-wrapper");
     } else {
-        $('#page-wrapper').load(location.hash.slice(1) + ".html #page-wrapper", function(response, status, xhr) {
+        $('#page-wrapper').load(hash.slice(1) + ".html #page-wrapper", function(response, status, xhr) {
           if ( status == "error" ) {
             $('#page-wrapper').load("fail.html #page-wrapper");
+          } else {
+            eval($("#js").text());
           }
         });
-
-        if (location.hash.slice(1) == 'stats') {
-          setvar();
-        }
     }
 };
 
@@ -418,5 +412,4 @@ function stat_error_show() { //being lazy
 
 $(window).load(function(){
   newpage();
-  setvar();
 });
