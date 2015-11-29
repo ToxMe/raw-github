@@ -194,6 +194,8 @@ function newpage() {
     } else {
         pageload(hash);
     }
+
+    $("#ver").text(ver);
 };
 
 function pageload(url) {
