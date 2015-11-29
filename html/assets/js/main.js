@@ -185,21 +185,25 @@ if ('addEventListener' in document) {
 
 function newpage() {
     var hash = location.hash.replace('#!/','');
-    nanobar.go(100)
+    nanobar.go(100);
     $("html, body").animate({ scrollTop: 0 }, "fast");
     if (hash == '') { //"https://" + document.domain +
-        $('#page-wrapper').load("home.html #page-wrapper");
+        pageload('home');
     } else if (hash == '#') {
-        $('#page-wrapper').load("home.html #page-wrapper");
+        pageload('home');
     } else {
-        $('#page-wrapper').load(hash + ".html #page-wrapper", function(response, status, xhr) {
-          if ( status == "error" ) {
-            $('#page-wrapper').load("fail.html #page-wrapper");
-          } else {
-            eval($("#js").text());
-          }
-        });
+        pageload(hash);
     }
+};
+
+function pageload(url) {
+  $('#page-wrapper').load(url + ".html #page-wrapper", function(response, status, xhr) {
+    if ( status == "error" ) {
+      $('#page-wrapper').load("fail.html #page-wrapper");
+    } else {
+      eval($("#js").text());
+    }
+  })
 };
 
 function sethour() {
