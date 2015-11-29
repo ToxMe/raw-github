@@ -184,7 +184,7 @@ if ('addEventListener' in document) {
 }
 
 function newpage() {
-    var hash = location.hash.replace('!','');
+    var hash = location.hash.replace('#!/','');
     nanobar.go(100)
     $("html, body").animate({ scrollTop: 0 }, "fast");
     if (hash == '') { //"https://" + document.domain +
@@ -192,7 +192,7 @@ function newpage() {
     } else if (hash == '#') {
         $('#page-wrapper').load("home.html #page-wrapper");
     } else {
-        $('#page-wrapper').load(hash.slice(1) + ".html #page-wrapper", function(response, status, xhr) {
+        $('#page-wrapper').load(hash + ".html #page-wrapper", function(response, status, xhr) {
           if ( status == "error" ) {
             $('#page-wrapper').load("fail.html #page-wrapper");
           } else {
