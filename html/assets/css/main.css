@@ -51,6 +51,19 @@ cue boilerplate licence text
 		box-sizing: border-box;
 	}
 
+	.failopt {
+		position:absolute;
+		width:50.05%;
+	}
+
+.failopt-right {
+	right:0;
+}
+
+.failopt-left {
+	left:0;
+}
+
 .loader {
   width: 99px;
   height: 100px;
