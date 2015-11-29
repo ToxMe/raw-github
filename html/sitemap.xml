@@ -4,22 +4,21 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 <url>
-  <loc>https://phobos.toxme.se/</loc>
+  <loc>https://phobos.toxme.se</loc>
   <changefreq>daily</changefreq>
 </url>
 <url>
-  <loc>https://phobos.toxme.se/#!faq</loc>
+  <loc>https://phobos.toxme.se/#!/faq</loc>
   <changefreq>daily</changefreq>
 </url>
 <url>
-  <loc>https://phobos.toxme.se/#!stats</loc>
+  <loc>https://phobos.toxme.se/#!/stats</loc>
   <changefreq>daily</changefreq>
 </url>
 <url>
-  <loc>https://phobos.toxme.se/#!open</loc>
+  <loc>https://phobos.toxme.se/#!/open</loc>
   <changefreq>daily</changefreq>
 </url>
 </urlset>
