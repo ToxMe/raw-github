@@ -3,6 +3,7 @@ var options = {
     id: 'mynano'
 };
 var nanobar = new Nanobar(options);
+var ver = '';
 
 var statapiurl = 'https://phobos.toxme.se/stats/weekly.json'; //default
 
@@ -412,4 +413,9 @@ function stat_error_show() { //being lazy
 
 $(window).load(function(){
   newpage();
+
+  $.get('manifest.appcache', function(txt) {
+      ver = txt.split('\n')[1].split('#')[1];
+    $("#ver").text(ver);
+  });
 });
