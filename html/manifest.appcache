@@ -1,15 +1,32 @@
 CACHE MANIFEST
-#v0.0.9e
+#v0.0.9f
 
 CACHE:
 images/favicon.ico
-assets/css/main.css
 assets/js/main.js
 assets/js/util.js
 assets/js/jquery.scrollex.min.js
 assets/js/jquery.min.js
 assets/js/skel.min.js
+assets/js/fastclick.min.js
+assets/js/chart.min.js
+assets/js/nanobar.min.js
 assets/css/images/close.svg
+assets/css/images/usd.svg
+assets/css/images/angle-double-right.svg
+assets/css/images/code-fork.svg
+assets/css/main.css
+assets/css/font-awesome.min.css
+assets/fonts/fontawesome-webfont.ttf
+assets/fonts/source-sans-pro-v9-latin-300.woff2
+assets/fonts/source-sans-pro-v9-latin-300.woff
+assets/fonts/source-sans-pro-v9-latin-300italic.woff2
+assets/fonts/source-sans-pro-v9-latin-300italic.woff
+assets/fonts/source-sans-pro-v9-latin-600.woff2
+assets/fonts/source-sans-pro-v9-latin-600.woff
+assets/fonts/source-sans-pro-v9-latin-600italic.woff2
+assets/fonts/source-sans-pro-v9-latin-600italic.woff
+
 images/bg.jpg
 /
 #
@@ -18,18 +35,6 @@ home.html
 faq.html
 stats.html
 open.html
-https://raw-github.toxme.se/encharm/Font-Awesome-SVG-PNG/master/white/svg/usd.svg
-https://raw-github.toxme.se/encharm/Font-Awesome-SVG-PNG/master/white/svg/angle-double-right.svg
-https://raw-github.toxme.se/encharm/Font-Awesome-SVG-PNG/master/white/svg/code-fork.svg
-https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js
-https://phobos.toxme.se/assets/css/font-awesome.min.css
-https://fonts.googleapis.com/css?family=Raleway:200,700|Source+Sans+Pro:300,600,300italic,600italic
-https://raw-github.toxme.se/stqism/Py2VM/gh-pages/js/nanobar.min.js
-https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js
-https://phobos.toxme.se/assets/fonts/fontawesome-webfont.ttf?v=4.4.0
-https://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGCP2LEk6lMzYsRqr3dHFImA.woff2
-https://fonts.gstatic.com/s/raleway/v9/8KhZd3VQBtXTAznvKjw-kwzyDMXhdD8sAj6OAJTFsBI.woff2
-https://fonts.gstatic.com/s/raleway/v9/JbtMzqLaYbbbCL9X6EvaIwzyDMXhdD8sAj6OAJTFsBI.woff2
 
 NETWORK:
 https://phobos.toxme.se/stats/weekly.json
