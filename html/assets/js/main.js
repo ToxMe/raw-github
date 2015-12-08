@@ -389,6 +389,15 @@ function setvar() {
       };
     }
 
+    $('#req').empty();
+    $('#req').append('<canvas id="req_graph" name="req_graph" style="width:100%;" height="100"></canvas>');
+
+    $('#uniq').empty();
+    $('#uniq').append('<canvas id="unique_graph" name="unique_graph" style="width:100%;" height="100"></canvas>');
+
+    $('#bandw').empty();
+    $('#bandw').append('<canvas id="bandwidth_graph" name="unique_graph" style="width:100%;" height="100"></canvas>');
+
     try {
       var ct_req = $("#req_graph").get(0).getContext("2d");
        //This will get the first returned node in the jQuery collection.
@@ -407,6 +416,7 @@ function setvar() {
       var bandwidth = new Chart(ct_bt).Line(bandwidth_stats, {
         bezierCurveTension : 0.2
       });
+
   } catch(err) {
     console.log("Err: unable to set charts")
   }
