@@ -199,9 +199,12 @@ function newpage() {
 };
 
 function pageload(url) {
+  if (document.domain != "") {
+    url = "//" + document.domain + '/' + url
+  }
   $('#page-wrapper').load(url + ".html #page-wrapper", function(response, status, xhr) {
     if ( status == "error" ) {
-      $('#page-wrapper').load("fail.html #page-wrapper");
+      $('#page-wrapper').load("//" + document.domain + "fail.html #page-wrapper");
     } else {
       eval($("#js").text());
     }
