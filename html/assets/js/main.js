@@ -6,6 +6,7 @@ var nanobar = new Nanobar(options);
 var ver = '';
 
 var statapiurl = 'https://phobos.toxme.se/stats/weekly.json'; //default
+var stattype = 1; // 0 is month, 1 is week, 2 is hour
 
 (function($) {
 
@@ -215,6 +216,7 @@ function sethour() {
   $("#opt-week, #opt-month").removeClass("special");
   $("#opt-hour").addClass("special");
   statapiurl = 'https://phobos.toxme.se/stats/hourly.json';
+  stattype = 2;
   setvar();
 }
 
@@ -222,6 +224,7 @@ function setweek() {
   $("#opt-hour, #opt-month").removeClass("special");
   $("#opt-week").addClass("special");
   statapiurl = 'https://phobos.toxme.se/stats/weekly.json';
+  stattype = 1;
   setvar();
 }
 
@@ -229,6 +232,7 @@ function setmonth() {
   $("#opt-hour, #opt-week").removeClass("special");
   $("#opt-month").addClass("special");
   statapiurl = 'https://phobos.toxme.se/stats/monthly.json';
+  stattype = 0;
   setvar();
 }
 
@@ -244,50 +248,146 @@ function setvar() {
     $("#bps_cur").text(data.bandwidth.current.kbps + ' KB/s')
     $("#bps_avg").text(data.bandwidth.a0.kbps + ' KB/s')
 
-    var req_stats = {
-      labels: [data.request.a0.date, data.request.a1.date, data.request.a2.date, data.request.a3.date, data.request.a4.date, data.request.a5.date, data.request.a6.date],
-      datasets: [
-          {
-              fillColor: "rgba(151,187,205,0.2)",
-              strokeColor: "rgba(151,187,205,1)",
-              pointColor: "rgba(151,187,205,1)",
-              pointStrokeColor: "#fff",
-              pointHighlightFill: "#fff",
-              pointHighlightStroke: "rgba(151,187,205,1)",
-              data: [data.request.a0.count, data.request.a1.count, data.request.a2.count, data.request.a3.count, data.request.a4.count, data.request.a5.count, data.request.a6.count]
-          }
-      ]
-    };
+    if (stattype == 0) { //month
+      var req_stats = {
+        labels: [data.request.a0.date, data.request.a1.date, data.request.a2.date, data.request.a3.date, data.request.a4.date, data.request.a5.date, data.request.a6.date, data.request.a7.date, data.request.a8.date, data.request.a9.date, data.request.a10.date, data.request.a11.date, data.request.a12.date, data.request.a13.date, data.request.a14.date, data.request.a15.date, data.request.a16.date, data.request.a17.date, data.request.a18.date, data.request.a19.date, data.request.a20.date, data.request.a21.date, data.request.a22.date, data.request.a23.date, data.request.a24.date, data.request.a25.date, data.request.a26.date, data.request.a27.date],
+        datasets: [
+            {
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [data.request.a0.count, data.request.a1.count, data.request.a2.count, data.request.a3.count, data.request.a4.count, data.request.a5.count, data.request.a6.count, data.request.a7.count, data.request.a8.count, data.request.a9.count, data.request.a10.count, data.request.a11.count, data.request.a12.count, data.request.a13.count, data.request.a14.count, data.request.a15.count, data.request.a16.count, data.request.a17.count, data.request.a18.count, data.request.a19.count, data.request.a20.count, data.request.a21.count, data.request.a22.count, data.request.a23.count, data.request.a24.count, data.request.a25.count, data.request.a26.count, data.request.a27.count]
+            }
+        ]
+      };
+    } else if (stattype == 1) { //week
+      var req_stats = {
+        labels: [data.request.a0.date, data.request.a1.date, data.request.a2.date, data.request.a3.date, data.request.a4.date, data.request.a5.date, data.request.a6.date],
+        datasets: [
+            {
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [data.request.a0.count, data.request.a1.count, data.request.a2.count, data.request.a3.count, data.request.a4.count, data.request.a5.count, data.request.a6.count]
+            }
+        ]
+      };
+    } else if (stattype == 2) { //hour
+      var req_stats = {
+        labels: [data.request.a0.date, data.request.a1.date, data.request.a2.date, data.request.a3.date, data.request.a4.date, data.request.a5.date, data.request.a6.date, data.request.a7.date, data.request.a8.date, data.request.a9.date, data.request.a10.date, data.request.a11.date, data.request.a12.date, data.request.a13.date, data.request.a14.date, data.request.a15.date, data.request.a16.date, data.request.a17.date, data.request.a18.date, data.request.a19.date, data.request.a20.date, data.request.a21.date, data.request.a22.date, data.request.a23.date],
+        datasets: [
+            {
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [data.request.a0.count, data.request.a1.count, data.request.a2.count, data.request.a3.count, data.request.a4.count, data.request.a5.count, data.request.a6.count, data.request.a7.count, data.request.a8.count, data.request.a9.count, data.request.a10.count, data.request.a11.count, data.request.a12.count, data.request.a13.count, data.request.a14.count, data.request.a15.count, data.request.a16.count, data.request.a17.count, data.request.a18.count, data.request.a19.count, data.request.a20.count, data.request.a21.count, data.request.a22.count, data.request.a23.count]
+            }
+        ]
+      };
+    }
 
-    var unique_stats = {
-      labels: [data.request.a0.date, data.request.a1.date, data.request.a2.date, data.request.a3.date, data.request.a4.date, data.request.a5.date, data.request.a6.date],
-      datasets: [
-          {
-              fillColor: "rgba(151,187,205,0.2)",
-              strokeColor: "rgba(151,187,205,1)",
-              pointColor: "rgba(151,187,205,1)",
-              pointStrokeColor: "#fff",
-              pointHighlightFill: "#fff",
-              pointHighlightStroke: "rgba(151,187,205,1)",
-              data: [data.unique.a0.count, data.unique.a1.count, data.unique.a2.count, data.unique.a3.count, data.unique.a4.count, data.unique.a5.count, data.unique.a6.count]
-          }
-      ]
-    };
+    if (stattype == 0) { //month
+      var unique_stats = {
+        labels: [data.unique.a0.date, data.unique.a1.date, data.unique.a2.date, data.unique.a3.date, data.unique.a4.date, data.unique.a5.date, data.unique.a6.date, data.unique.a7.date, data.unique.a8.date, data.unique.a9.date, data.unique.a10.date, data.unique.a11.date, data.unique.a12.date, data.unique.a13.date, data.unique.a14.date, data.unique.a15.date, data.unique.a16.date, data.unique.a17.date, data.unique.a18.date, data.unique.a19.date, data.unique.a20.date, data.unique.a21.date, data.unique.a22.date, data.unique.a23.date, data.unique.a24.date, data.unique.a25.date, data.unique.a26.date, data.unique.a27.date],
+        datasets: [
+            {
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [data.unique.a0.count, data.unique.a1.count, data.unique.a2.count, data.unique.a3.count, data.unique.a4.count, data.unique.a5.count, data.unique.a6.count, data.unique.a7.count, data.unique.a8.count, data.unique.a9.count, data.unique.a10.count, data.unique.a11.count, data.unique.a12.count, data.unique.a13.count, data.unique.a14.count, data.unique.a15.count, data.unique.a16.count, data.unique.a17.count, data.unique.a18.count, data.unique.a19.count, data.unique.a20.count, data.unique.a21.count, data.unique.a22.count, data.unique.a23.count, data.unique.a24.count, data.unique.a25.count, data.unique.a26.count, data.unique.a27.count]
+            }
+        ]
+      };
+    } else if (stattype == 1) { //week
+      var unique_stats = {
+        labels: [data.unique.a0.date, data.unique.a1.date, data.unique.a2.date, data.unique.a3.date, data.unique.a4.date, data.unique.a5.date, data.unique.a6.date],
+        datasets: [
+            {
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [data.unique.a0.count, data.unique.a1.count, data.unique.a2.count, data.unique.a3.count, data.unique.a4.count, data.unique.a5.count, data.unique.a6.count]
+            }
+        ]
+      };
+    } else if (stattype == 2) { //hour
+      var unique_stats = {
+        labels: [data.unique.a0.date, data.unique.a1.date, data.unique.a2.date, data.unique.a3.date, data.unique.a4.date, data.unique.a5.date, data.unique.a6.date, data.unique.a7.date, data.unique.a8.date, data.unique.a9.date, data.unique.a10.date, data.unique.a11.date, data.unique.a12.date, data.unique.a13.date, data.unique.a14.date, data.unique.a15.date, data.unique.a16.date, data.unique.a17.date, data.unique.a18.date, data.unique.a19.date, data.unique.a20.date, data.unique.a21.date, data.unique.a22.date, data.unique.a23.date],
+        datasets: [
+            {
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [data.unique.a0.count, data.unique.a1.count, data.unique.a2.count, data.unique.a3.count, data.unique.a4.count, data.unique.a5.count, data.unique.a6.count, data.unique.a7.count, data.unique.a8.count, data.unique.a9.count, data.unique.a10.count, data.unique.a11.count, data.unique.a12.count, data.unique.a13.count, data.unique.a14.count, data.unique.a15.count, data.unique.a16.count, data.unique.a17.count, data.unique.a18.count, data.unique.a19.count, data.unique.a20.count, data.unique.a21.count, data.unique.a22.count, data.unique.a23.count]
+            }
+        ]
+      };
+    }
 
-    var bandwidth_stats = {
-      labels: [data.request.a0.date, data.request.a1.date, data.request.a2.date, data.request.a3.date, data.request.a4.date, data.request.a5.date, data.request.a6.date],
-      datasets: [
-          {
-              fillColor: "rgba(151,187,205,0.2)",
-              strokeColor: "rgba(151,187,205,1)",
-              pointColor: "rgba(151,187,205,1)",
-              pointStrokeColor: "#fff",
-              pointHighlightFill: "#fff",
-              pointHighlightStroke: "rgba(151,187,205,1)",
-              data: [data.bandwidth.a0.mb, data.bandwidth.a1.mb, data.bandwidth.a2.mb, data.bandwidth.a3.mb, data.bandwidth.a4.mb, data.bandwidth.a5.mb, data.bandwidth.a6.mb]
-          }
-      ]
-    };
+    if (stattype == 0) { //month
+      var bandwidth_stats = {
+        labels: [data.bandwidth.a0.date, data.bandwidth.a1.date, data.bandwidth.a2.date, data.bandwidth.a3.date, data.bandwidth.a4.date, data.bandwidth.a5.date, data.bandwidth.a6.date, data.bandwidth.a7.date, data.bandwidth.a8.date, data.bandwidth.a9.date, data.bandwidth.a10.date, data.bandwidth.a11.date, data.bandwidth.a12.date, data.bandwidth.a13.date, data.bandwidth.a14.date, data.bandwidth.a15.date, data.bandwidth.a16.date, data.bandwidth.a17.date, data.bandwidth.a18.date, data.bandwidth.a19.date, data.bandwidth.a20.date, data.bandwidth.a21.date, data.bandwidth.a22.date, data.bandwidth.a23.date, data.bandwidth.a24.date, data.bandwidth.a25.date, data.bandwidth.a26.date, data.bandwidth.a27.date],
+        datasets: [
+            {
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [data.bandwidth.a0.mb, data.bandwidth.a1.mb, data.bandwidth.a2.mb, data.bandwidth.a3.mb, data.bandwidth.a4.mb, data.bandwidth.a5.mb, data.bandwidth.a6.mb, data.bandwidth.a7.mb, data.bandwidth.a8.mb, data.bandwidth.a9.mb, data.bandwidth.a10.mb, data.bandwidth.a11.mb, data.bandwidth.a12.mb, data.bandwidth.a13.mb, data.bandwidth.a14.mb, data.bandwidth.a15.mb, data.bandwidth.a16.mb, data.bandwidth.a17.mb, data.bandwidth.a18.mb, data.bandwidth.a19.mb, data.bandwidth.a20.mb, data.bandwidth.a21.mb, data.bandwidth.a22.mb, data.bandwidth.a23.mb, data.bandwidth.a24.mb, data.bandwidth.a25.mb, data.bandwidth.a26.mb, data.bandwidth.a27.mb]
+            }
+        ]
+      };
+    } else if (stattype == 1) { //week
+      var bandwidth_stats = {
+        labels: [data.bandwidth.a0.date, data.bandwidth.a1.date, data.bandwidth.a2.date, data.bandwidth.a3.date, data.bandwidth.a4.date, data.bandwidth.a5.date, data.bandwidth.a6.date],
+        datasets: [
+            {
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [data.bandwidth.a0.mb, data.bandwidth.a1.mb, data.bandwidth.a2.mb, data.bandwidth.a3.mb, data.bandwidth.a4.mb, data.bandwidth.a5.mb, data.bandwidth.a6.mb]
+            }
+        ]
+      };
+    } else if (stattype == 2) { //hour
+      var bandwidth_stats = {
+        labels: [data.bandwidth.a0.date, data.bandwidth.a1.date, data.bandwidth.a2.date, data.bandwidth.a3.date, data.bandwidth.a4.date, data.bandwidth.a5.date, data.bandwidth.a6.date, data.bandwidth.a7.date, data.bandwidth.a8.date, data.bandwidth.a9.date, data.bandwidth.a10.date, data.bandwidth.a11.date, data.bandwidth.a12.date, data.bandwidth.a13.date, data.bandwidth.a14.date, data.bandwidth.a15.date, data.bandwidth.a16.date, data.bandwidth.a17.date, data.bandwidth.a18.date, data.bandwidth.a19.date, data.bandwidth.a20.date, data.bandwidth.a21.date, data.bandwidth.a22.date, data.bandwidth.a23.date],
+        datasets: [
+            {
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [data.bandwidth.a0.mb, data.bandwidth.a1.mb, data.bandwidth.a2.mb, data.bandwidth.a3.mb, data.bandwidth.a4.mb, data.bandwidth.a5.mb, data.bandwidth.a6.mb, data.bandwidth.a7.mb, data.bandwidth.a8.mb, data.bandwidth.a9.mb, data.bandwidth.a10.mb, data.bandwidth.a11.mb, data.bandwidth.a12.mb, data.bandwidth.a13.mb, data.bandwidth.a14.mb, data.bandwidth.a15.mb, data.bandwidth.a16.mb, data.bandwidth.a17.mb, data.bandwidth.a18.mb, data.bandwidth.a19.mb, data.bandwidth.a20.mb, data.bandwidth.a21.mb, data.bandwidth.a22.mb, data.bandwidth.a23.mb]
+            }
+        ]
+      };
+    }
 
     try {
       var ct_req = $("#req_graph").get(0).getContext("2d");

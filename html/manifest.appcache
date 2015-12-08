@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#v0.0.9j
+#v0.0.9k
 
 CACHE:
 images/favicon.ico
@@ -44,5 +44,7 @@ stats.html
 open.html
 
 NETWORK:
+https://phobos.toxme.se/stats/monthly.json
 https://phobos.toxme.se/stats/weekly.json
+https://phobos.toxme.se/stats/hourly.json
 *
